@@ -97,7 +97,7 @@
                 </ActivityAction>
               </ui:ForEachRow.Body>
             </ui:ForEachRow>
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[sum1]" TopMost="True" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[sum1.ToString() + &quot; colones&quot;]" TopMost="True" />
             <ui:ExcelReadRange AddHeaders="True" DataTable="[dt2]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="E1001:E2000" SheetName="Hoja 1" />
             <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dt2]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="342,299" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
