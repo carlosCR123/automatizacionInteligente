@@ -1,4 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="508,1447" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="sum1value" Type="OutArgument(x:Double)" />
+    <x:Property Name="sum2value" Type="OutArgument(x:Double)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>508,1536</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -48,22 +57,24 @@
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="468,1327" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap:VirtualizedContainerService.HintSize="468,1456" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Double" Name="sum2" />
+      <Variable x:TypeArguments="x:Double" Name="sum1" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="430,1235" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="Files\Proyecto.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="430,1364" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="Files\Proyecto.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="380,1126" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="380,1255" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:Double" Name="sum1" />
-              <Variable x:TypeArguments="x:Double" Name="sum2" />
               <Variable x:TypeArguments="sd:DataTable" Name="dt1" />
               <Variable x:TypeArguments="sd:DataTable" Name="dt2" />
             </Sequence.Variables>
@@ -72,7 +83,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt1]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="E2:E1000" SheetName="Hoja 1" />
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt1]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="E2:E10000" SheetName="Hoja 1" />
             <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dt1]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="342,299" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
@@ -97,8 +108,15 @@
                 </ActivityAction>
               </ui:ForEachRow.Body>
             </ui:ForEachRow>
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[sum1.ToString() + &quot; colones&quot;]" TopMost="True" />
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt2]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="E1001:E2000" SheetName="Hoja 1" />
+            <Assign sap:VirtualizedContainerService.HintSize="342,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Double">[sum1value]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Double">[sum1]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt2]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="E10001:E20001" SheetName="Hoja 1" />
             <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dt2]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="342,299" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
@@ -123,7 +141,20 @@
                 </ActivityAction>
               </ui:ForEachRow.Body>
             </ui:ForEachRow>
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="342,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[sum2]" TopMost="True" />
+            <Assign sap:VirtualizedContainerService.HintSize="342,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Double">[sum2value]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Double">[sum2]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InvokeWorkflowInteractive ContinueOnError="{x:Null}" Depth="0" DisplayName="Launch Workflow Interactive" Height="0" sap:VirtualizedContainerService.HintSize="342,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowInteractive_1" KeepSessionConnected="True" LoginToConsole="False" UnSafe="True" Width="0" WorkflowFileName="Send Outlook Email.xaml">
+              <ui:InvokeWorkflowInteractive.Arguments>
+                <InOutArgument x:TypeArguments="x:Double" x:Key="value1">[sum1value]</InOutArgument>
+                <InOutArgument x:TypeArguments="x:Double" x:Key="value2">[sum2value]</InOutArgument>
+              </ui:InvokeWorkflowInteractive.Arguments>
+            </ui:InvokeWorkflowInteractive>
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
